@@ -9,92 +9,64 @@ public class MyDijkstra {
 
     public static void calculateShortestPath(MyGraph g, MyNode source, MyNode destination) {
 
+        // this array contains all the visited nodes
+        ArrayList<MyNode> visited_nodes = new ArrayList<MyNode>();
 
-        ArrayList<MyNode> visited = new ArrayList<MyNode>();
+        //finds the given in the graph, and since this is the start node, its weight will be 0
+        MyNode current_node;
+        current_node = g.findNode(source);
+        current_node.setWeight(0);
 
-        MyNode root = source;
-        source = g.findNode(source);
-        source.setWeight(0);
-//            source.setVisited(1);
-        //visited.add(source);
+        while (current_node != destination && current_node.getVisited() != 1) {
+            current_node.setVisited(1);    //we mark the current_node node as being visited
+            visited_nodes.add(current_node);    //we add the current node in the visited_nodes list
+            List<Triplet<MyNode, MyNode, Integer>> current_node_edges;
+            current_node_edges = current_node.getEdges();
 
-        while (source != destination && source.getVisited() != 1) {
-
-            source.setVisited(1);
-            visited.add(source);
-            //asici
-        /*
-        de la sursa iei toate nodurile pe care le poti vizita (get edges?)
-        vezi weightul si il recalculezi
-         */
-
-            List<Triplet<MyNode, MyNode, Integer>> ed;
-            ed = source.getEdges();
-            //ArrayList<Pair<String, Integer>> pairs;
-            //Triplet<MyNode, MyNode, Integer> trp;
-            // trp = ed.
-
-            for (Triplet<MyNode, MyNode, Integer> t : ed) {
-                int ww = t.getFirst().getWeight() + t.getThird();
-                if (ww < t.getSecond().getWeight() && t.getSecond().visited == 0) {
-                    t.getSecond().setWeight(ww);
+            //here I compute the weight for each node like this:
+            //the current_node has a set of edges
+            //for each of those edges you need a source (the current_node) and a destination_node (S ----> D)
+            // the weight for the destination node
+            for (Triplet<MyNode, MyNode, Integer> edge : current_node_edges) {
+                int weight = edge.getFirst().getWeight() + edge.getThird();
+                if (weight < edge.getSecond().getWeight() && edge.getSecond().getVisited() == 0) {
+                    edge.getSecond().setWeight(weight);
                 }
             }
             MyNode newNode = new MyNode();
             int aux = 100;
             int cont = 0;
-            for (Triplet<MyNode, MyNode, Integer> ii : ed) {
+            for (Triplet<MyNode, MyNode, Integer> ii : current_node_edges) {
 
-                if (ii.getSecond().getWeight() < aux && ii.getSecond().visited == 0 && !visited.contains(ii.getSecond())) {
+                if (ii.getSecond().getWeight() < aux && ii.getSecond().getVisited() == 0 && !visited_nodes.contains(ii.getSecond())) {
                     aux = ii.getSecond().getWeight();
                     newNode = ii.getSecond();
-                } else if (ii.getSecond().visited == 1 && visited.contains(ii.getSecond())) {
+                } else if (ii.getSecond().getVisited() == 1 && visited_nodes.contains(ii.getSecond())) {
                     cont++;
                 }
             }
-
-            if (cont != ed.size()) {
-                source = g.findNode(newNode);
-                if (source == null) {
+            if (cont != current_node_edges.size()) {
+                current_node = g.findNode(newNode);
+                if (current_node == null) {
                     break;
                 }
             } else {
-                visited.remove(visited.size() - 1);
-                source = visited.get(visited.size() - 1);
-                source.setVisited(0);
-                visited.remove(visited.size() - 1);
+                visited_nodes.remove(visited_nodes.size() - 1);
+                current_node = visited_nodes.get(visited_nodes.size() - 1);
+                current_node.setVisited(0);
+                visited_nodes.remove(visited_nodes.size() - 1);
             }
-/*
-            for (Triplet<MyNode, MyNode, Integer> pp : ed) {
-                if(pp.getSecond().getVisited()==1){
-                    //visited.remove(pp.getFirst());
-                    visited.remove(visited.size()-1);
-                    newNode = visited.get(visited.size()-1);
-                    //newNode.setVisited(0);
-                    System.out.println("AAAA:"+newNode.getName() + "    " + newNode.getVisited());
-                    //break;
-                } else
-                    continue;
-            }
-            */
-//
-//            source = g.findNode(newNode);
-//            if (source == null) {
-//                break;
-//            }
-
         }
-        visited.add(destination);
+        visited_nodes.add(destination);
 
         for (
-                MyNode n : visited) {
-            System.out.println(n.name);
+                MyNode n : visited_nodes) {
+            System.out.println(n.getName());
         }
 
     }
 
     public static void main(String args[]) {
-
 
         MyNode nodeA = new MyNode("A");
         MyNode nodeB = new MyNode("B");
@@ -144,7 +116,6 @@ public class MyDijkstra {
 
 
         MyGraph graph = new MyGraph();
-
         graph.addNode(nodeA);
         graph.addNode(nodeB);
         graph.addNode(nodeC);

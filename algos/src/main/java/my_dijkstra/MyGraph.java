@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MyGraph {
 
-    ArrayList<MyNode> nodes = new ArrayList<MyNode>();
+    private ArrayList<MyNode> nodes = new ArrayList<MyNode>();
 
     public void addNode(MyNode node) {
         this.nodes.add(node);

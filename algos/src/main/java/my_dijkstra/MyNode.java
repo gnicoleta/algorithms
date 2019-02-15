@@ -1,14 +1,11 @@
 package my_dijkstra;
-
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyNode {
-    String name;
-    int visited = 0;
-    int weight = 100;
+    private String name;
+    private int visited = 0;
+    private int weight = 100;
 
 
     List<Triplet<MyNode, MyNode, Integer>> edges = new ArrayList<Triplet<MyNode, MyNode, Integer>>();
@@ -71,11 +68,4 @@ public class MyNode {
         this.weight = weight;
     }
 
-//    public ArrayList<Triplet<MyNode, MyNode, Integer>> getEdge() {
-//        return edges;
-//    }
-//
-//    public void setEdge(ArrayList<Triplet<MyNode, MyNode, Integer>> edge) {
-//        this.edges = edge;
-//    }
 }
