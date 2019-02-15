@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MyDijkstra {
 
-    public static void calculateShirtesPath(MyGraph g, MyNode source, MyNode destination) {
+    public static void calculateShortestPath(MyGraph g, MyNode source, MyNode destination) {
 
 
         ArrayList<MyNode> visited = new ArrayList<MyNode>();
@@ -18,7 +18,7 @@ public class MyDijkstra {
 //            source.setVisited(1);
         //visited.add(source);
 
-        while (source != destination && !visited.contains(source)) {
+        while (source != destination && source.getVisited() != 1) {
 
             source.setVisited(1);
             visited.add(source);
@@ -36,7 +36,7 @@ public class MyDijkstra {
 
             for (Triplet<MyNode, MyNode, Integer> t : ed) {
                 int ww = t.getFirst().getWeight() + t.getThird();
-                if (ww < t.getSecond().getWeight() && t.getSecond().visited==0) {
+                if (ww < t.getSecond().getWeight() && t.getSecond().visited == 0) {
                     t.getSecond().setWeight(ww);
                 }
             }
@@ -45,24 +45,24 @@ public class MyDijkstra {
             int cont = 0;
             for (Triplet<MyNode, MyNode, Integer> ii : ed) {
 
-                if (ii.getSecond().getWeight() < aux && ii.getSecond().visited==0 && !visited.contains(ii.getSecond())) {
+                if (ii.getSecond().getWeight() < aux && ii.getSecond().visited == 0 && !visited.contains(ii.getSecond())) {
                     aux = ii.getSecond().getWeight();
                     newNode = ii.getSecond();
-                } else if(ii.getSecond().visited==0 && !visited.contains(ii.getSecond())){
+                } else if (ii.getSecond().visited == 1 && visited.contains(ii.getSecond())) {
                     cont++;
                 }
             }
 
-            if(cont!=ed.size()){
+            if (cont != ed.size()) {
                 source = g.findNode(newNode);
                 if (source == null) {
                     break;
                 }
-            }
-            else
-            {
-                visited.remove(visited.size()-1);
-                source = visited.get(visited.size()-2);
+            } else {
+                visited.remove(visited.size() - 1);
+                source = visited.get(visited.size() - 1);
+                source.setVisited(0);
+                visited.remove(visited.size() - 1);
             }
 /*
             for (Triplet<MyNode, MyNode, Integer> pp : ed) {
@@ -143,8 +143,6 @@ public class MyDijkstra {
         nodeF.createEdge(nodeF, nodeE, 2);
 
 
-
-
         MyGraph graph = new MyGraph();
 
         graph.addNode(nodeA);
@@ -154,6 +152,6 @@ public class MyDijkstra {
         graph.addNode(nodeE);
         graph.addNode(nodeF);
 
-        MyDijkstra.calculateShirtesPath(graph, nodeC, nodeF);
+        MyDijkstra.calculateShortestPath(graph, nodeC, nodeF);
     }
 }

@@ -18,10 +18,10 @@ public class MyGraph {
         //int oo = this.nodes.indexOf(o);
         //return this.nodes.get(oo);
         for (MyNode mm : this.nodes) {
-            if(mm.getName().equals(o.getName())) {
+            if (mm.getName().equals(o.getName())) {
                 return mm;
             }
         }
-        return  null;
+        return null;
     }
 }

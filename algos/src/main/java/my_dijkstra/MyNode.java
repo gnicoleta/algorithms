@@ -17,6 +17,7 @@ public class MyNode {
         //Triplet t = new Triplet(source, destination, distance);
         edges.add(new Triplet(source, destination, distance));
     }
+
     public List<Triplet<MyNode, MyNode, Integer>> getEdges() {
         return this.edges;
     }
@@ -24,6 +25,7 @@ public class MyNode {
     public MyNode(String name) {
         this.name = name;
     }
+
     public MyNode() {
     }
 
