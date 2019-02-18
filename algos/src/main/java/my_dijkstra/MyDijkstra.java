@@ -25,28 +25,45 @@ public class MyDijkstra {
 
             //here I compute the weight for each node like this:
             //the current_node has a set of edges
-            //for each of those edges you need a source (the current_node) and a destination_node (S ----> D)
-            // the weight for the destination node
+            //for each of those edges you need a source (the current_node) and a destination_node (Source_node --edge--(weight)--> Destination_node)
+            // the weight for the destination node = the weight of the source + the weight on the edge
+            // if this sum si less than the weight of the destination node, then its weight will be overwritten by it
+            // otherwise the lesser value will be kept as the weight of the destination_node
             for (Triplet<MyNode, MyNode, Integer> edge : current_node_edges) {
                 int weight = edge.getFirst().getWeight() + edge.getThird();
                 if (weight < edge.getSecond().getWeight() && edge.getSecond().getVisited() == 0) {
                     edge.getSecond().setWeight(weight);
                 }
             }
-            MyNode newNode = new MyNode();
-            int aux = 100;
-            int cont = 0;
+
+            //After computing all the weights for the possible destination nodes of the edges of the current_node
+            // I want to choose the node with smaller weight
+            MyNode intermediary_node = new MyNode();
+            int MIN = Integer.MAX_VALUE;    //the minimum value will end up being stored in here
+            int contor = 0;    //this contor will be incremented each time a visited node is visited again (in order to avoid cycles in the graph)
             for (Triplet<MyNode, MyNode, Integer> ii : current_node_edges) {
 
-                if (ii.getSecond().getWeight() < aux && ii.getSecond().getVisited() == 0 && !visited_nodes.contains(ii.getSecond())) {
-                    aux = ii.getSecond().getWeight();
-                    newNode = ii.getSecond();
+                //I'm looking for the smallest weight and the intermediary_node will be the smallest node that I will choose
+                //in order ti obtain the shortest path
+                if (ii.getSecond().getWeight() < MIN && ii.getSecond().getVisited() == 0 && !visited_nodes.contains(ii.getSecond())) {
+                    MIN = ii.getSecond().getWeight();
+                    intermediary_node = ii.getSecond();
                 } else if (ii.getSecond().getVisited() == 1 && visited_nodes.contains(ii.getSecond())) {
-                    cont++;
+                    //if the destination (of the edge) was visited and it was also contained in the visited nodes list
+                    //the contor will be incremented
+                    contor++;
                 }
             }
-            if (cont != current_node_edges.size()) {
-                current_node = g.findNode(newNode);
+
+            //if all the possible nodes to visit from the current node were already visited
+            // (the contor will be the same size as the edges list of the current_node)
+            // if not all the destination_nodes of the current_node edges were visited
+            // current_node will become the intermediary_node (the one with the smallest weight)
+            // else we will remove the last node from the visited_nodes list (the current node from which we can get a cycle in the path)
+            // the current_node will become the anterior one of the current one (the one before the one that makes a cycle in the path)
+            // we set it as being unvisited (but it's destination nodes of edges will remain visited, so I can avoid another cycle)
+            if (contor != current_node_edges.size()) {
+                current_node = g.findNode(intermediary_node);
                 if (current_node == null) {
                     break;
                 }
@@ -57,7 +74,11 @@ public class MyDijkstra {
                 visited_nodes.remove(visited_nodes.size() - 1);
             }
         }
-        visited_nodes.add(destination);
+
+        if (current_node == destination) {
+            visited_nodes.add(destination);
+        }
+
 
         for (
                 MyNode n : visited_nodes) {
