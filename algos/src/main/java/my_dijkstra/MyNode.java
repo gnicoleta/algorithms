@@ -1,6 +1,7 @@
 package my_dijkstra;
 import java.util.ArrayList;
 import java.util.List;
+import util_structures.*;
 
 public class MyNode {
     private String name;
@@ -11,7 +12,7 @@ public class MyNode {
     List<Triplet<MyNode, MyNode, Integer>> edges = new ArrayList<Triplet<MyNode, MyNode, Integer>>();
 
     public void createEdge(MyNode source, MyNode destination, int distance) {
-        //Triplet t = new Triplet(source, destination, distance);
+        //util_structures.Triplet t = new util_structures.Triplet(source, destination, distance);
         edges.add(new Triplet(source, destination, distance));
     }
 

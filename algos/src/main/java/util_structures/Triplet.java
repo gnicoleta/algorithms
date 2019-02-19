@@ -1,4 +1,4 @@
-package my_dijkstra;
+package util_structures;
 
 public class Triplet<T, U, V> {
 

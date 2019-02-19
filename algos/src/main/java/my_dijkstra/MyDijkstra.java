@@ -1,6 +1,5 @@
 package my_dijkstra;
-
-import javafx.util.Pair;
+import util_structures.Triplet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +94,8 @@ public class MyDijkstra {
         MyNode nodeD = new MyNode("D");
         MyNode nodeE = new MyNode("E");
         MyNode nodeF = new MyNode("F");
-/*
+
+        /*
         nodeA.createEdge(nodeA, nodeB, 10);
         nodeA.createEdge(nodeA, nodeC, 15);
 
@@ -111,6 +111,7 @@ public class MyDijkstra {
         */
 
 
+        /*
         nodeA.createEdge(nodeA, nodeB, 2);
         nodeA.createEdge(nodeA, nodeC, 4);
 
@@ -134,6 +135,22 @@ public class MyDijkstra {
 
         nodeF.createEdge(nodeF, nodeD, 2);
         nodeF.createEdge(nodeF, nodeE, 2);
+        */
+
+        //THIS IS FOR AN ORIENTED GRAPH
+        nodeA.createEdge(nodeA, nodeB, 2);
+
+        nodeB.createEdge(nodeB, nodeC, 1);
+        nodeB.createEdge(nodeB, nodeD, 4);
+
+        nodeC.createEdge(nodeC, nodeA, 3);
+
+        nodeD.createEdge(nodeD, nodeC, 4);
+        nodeD.createEdge(nodeD, nodeE, 2);
+        nodeD.createEdge(nodeD, nodeF, 5);
+
+        nodeE.createEdge(nodeE, nodeF, 1);
+
 
 
         MyGraph graph = new MyGraph();
@@ -144,6 +161,6 @@ public class MyDijkstra {
         graph.addNode(nodeE);
         graph.addNode(nodeF);
 
-        MyDijkstra.calculateShortestPath(graph, nodeC, nodeF);
+        MyDijkstra.calculateShortestPath(graph, nodeA, nodeF);
     }
 }
