@@ -53,7 +53,7 @@ public class My_Prim {
             possible_edges_from_visited_nodes.remove(new Triplet<PNode, PNode, Integer>(current_node, current_node_parent, MIN));
         }
 
-        if(current_node.equals(destination)) {
+        if (current_node.equals(destination)) {
             visited_nodes.add(current_node);
         }
 //
@@ -78,34 +78,34 @@ public class My_Prim {
         PNode nodeF = new PNode("F");
         PNode nodeG = new PNode("G");
 
-        nodeA.createEdgeTo( nodeB, 2);
-        nodeA.createEdgeTo( nodeC, 3);
-        nodeA.createEdgeTo( nodeD, 3);
+        nodeA.createEdgeTo(nodeB, 2);
+        nodeA.createEdgeTo(nodeC, 3);
+        nodeA.createEdgeTo(nodeD, 3);
 
-        nodeB.createEdgeTo( nodeA, 2);
-        nodeB.createEdgeTo( nodeC, 4);
-        nodeB.createEdgeTo( nodeE, 3);
+        nodeB.createEdgeTo(nodeA, 2);
+        nodeB.createEdgeTo(nodeC, 4);
+        nodeB.createEdgeTo(nodeE, 3);
 
-        nodeC.createEdgeTo( nodeA, 3);
-        nodeC.createEdgeTo( nodeB, 4);
-        nodeC.createEdgeTo( nodeD, 5);
-        nodeC.createEdgeTo( nodeF, 6);
-        nodeC.createEdgeTo( nodeE, 1);
+        nodeC.createEdgeTo(nodeA, 3);
+        nodeC.createEdgeTo(nodeB, 4);
+        nodeC.createEdgeTo(nodeD, 5);
+        nodeC.createEdgeTo(nodeF, 6);
+        nodeC.createEdgeTo(nodeE, 1);
 
-        nodeD.createEdgeTo( nodeA, 2);
-        nodeD.createEdgeTo( nodeC, 5);
-        nodeD.createEdgeTo( nodeF, 7);
+        nodeD.createEdgeTo(nodeA, 2);
+        nodeD.createEdgeTo(nodeC, 5);
+        nodeD.createEdgeTo(nodeF, 7);
 
-        nodeE.createEdgeTo( nodeC, 1);
-        nodeE.createEdgeTo( nodeB, 3);
-        nodeE.createEdgeTo( nodeF, 8);
+        nodeE.createEdgeTo(nodeC, 1);
+        nodeE.createEdgeTo(nodeB, 3);
+        nodeE.createEdgeTo(nodeF, 8);
 
-        nodeF.createEdgeTo( nodeE, 8);
-        nodeF.createEdgeTo( nodeD, 7);
-        nodeF.createEdgeTo( nodeC, 6);
-        nodeF.createEdgeTo( nodeG, 9);
+        nodeF.createEdgeTo(nodeE, 8);
+        nodeF.createEdgeTo(nodeD, 7);
+        nodeF.createEdgeTo(nodeC, 6);
+        nodeF.createEdgeTo(nodeG, 9);
 
-        nodeG.createEdgeTo( nodeF, 9);
+        nodeG.createEdgeTo(nodeF, 9);
 
         PGraph graph = new PGraph();
         graph.addNode(nodeA);

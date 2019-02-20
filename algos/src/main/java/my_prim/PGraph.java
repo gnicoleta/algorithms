@@ -15,11 +15,9 @@ public class PGraph {
     }
 
 
-    public PNode findNode(PNode o) {
-        //int oo = this.nodes.indexOf(o);
-        //return this.nodes.get(oo);
+    public PNode findNode(PNode node) {
         for (PNode mm : this.nodes) {
-            if (mm.getName().equals(o.getName())) {
+            if (mm.getName().equals(node.getName())) {
                 return mm;
             }
         }

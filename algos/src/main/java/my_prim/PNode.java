@@ -1,10 +1,8 @@
 package my_prim;
 
-import my_dijkstra.MyNode;
 import util_structures.Triplet;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PNode {
     public String getName() {
@@ -19,9 +17,6 @@ public class PNode {
 
     ArrayList<Triplet<PNode, PNode, Integer>> edges = new ArrayList<Triplet<PNode, PNode, Integer>>();
 
-//    public void createEdge(PNode source, PNode destination, int distance) {
-//        edges.add(new Triplet(source, destination, distance));
-//    }
     public void createEdgeTo(PNode destination, int distance) {
         edges.add(new Triplet(this, destination, distance));
     }
