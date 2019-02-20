@@ -13,9 +13,9 @@ public class MyNode {
 
     List<Triplet<MyNode, MyNode, Integer>> edges = new ArrayList<Triplet<MyNode, MyNode, Integer>>();
 
-    public void createEdge(MyNode source, MyNode destination, int distance) {
+    public void createEdge(MyNode destination, int distance) {
         //util_structures.Triplet t = new util_structures.Triplet(source, destination, distance);
-        edges.add(new Triplet(source, destination, distance));
+        edges.add(new Triplet(this, destination, distance));
     }
 
     public List<Triplet<MyNode, MyNode, Integer>> getEdges() {

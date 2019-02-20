@@ -14,11 +14,9 @@ public class MyGraph {
         return this.nodes;
     }
 
-    public MyNode findNode(MyNode o) {
-        //int oo = this.nodes.indexOf(o);
-        //return this.nodes.get(oo);
+    public MyNode findNode(MyNode node) {
         for (MyNode mm : this.nodes) {
-            if (mm.getName().equals(o.getName())) {
+            if (mm.getName().equals(node.getName())) {
                 return mm;
             }
         }

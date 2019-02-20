@@ -97,60 +97,60 @@ public class MyDijkstra {
         MyNode nodeF = new MyNode("F");
 
         /*
-        nodeA.createEdge(nodeA, nodeB, 10);
-        nodeA.createEdge(nodeA, nodeC, 15);
+        nodeA.createEdge(nodeB, 10);
+        nodeA.createEdge(nodeC, 15);
 
-        nodeB.createEdge(nodeB, nodeD, 12);
-        nodeB.createEdge(nodeB, nodeF, 15);
+        nodeB.createEdge(nodeD, 12);
+        nodeB.createEdge(nodeF, 15);
 
-        nodeC.createEdge(nodeC, nodeE, 10);
+        nodeC.createEdge(nodeE, 10);
 
-        nodeD.createEdge(nodeD, nodeE, 2);
-        nodeD.createEdge(nodeD, nodeF, 1);
+        nodeD.createEdge(nodeE, 2);
+        nodeD.createEdge(nodeF, 1);
 
-        nodeF.createEdge(nodeF, nodeE, 5);
+        nodeF.createEdge(nodeE, 5);
         */
 
 
         /*
-        nodeA.createEdge(nodeA, nodeB, 2);
-        nodeA.createEdge(nodeA, nodeC, 4);
+        nodeA.createEdge(nodeB, 2);
+        nodeA.createEdge(nodeC, 4);
 
-        nodeB.createEdge(nodeB, nodeA, 2);
-        nodeB.createEdge(nodeB, nodeC, 1);
-        nodeB.createEdge(nodeB, nodeE, 2);
-        nodeB.createEdge(nodeB, nodeD, 4);
+        nodeB.createEdge(nodeA, 2);
+        nodeB.createEdge(nodeC, 1);
+        nodeB.createEdge(nodeE, 2);
+        nodeB.createEdge(nodeD, 4);
 
-        nodeC.createEdge(nodeC, nodeB, 1);
-        nodeC.createEdge(nodeC, nodeA, 4);
-        nodeC.createEdge(nodeC, nodeE, 3);
+        nodeC.createEdge(nodeB, 1);
+        nodeC.createEdge(nodeA, 4);
+        nodeC.createEdge(nodeE, 3);
 
-        nodeD.createEdge(nodeD, nodeB, 4);
-        nodeD.createEdge(nodeD, nodeF, 2);
-        nodeD.createEdge(nodeD, nodeE, 3);
+        nodeD.createEdge(nodeB, 4);
+        nodeD.createEdge(nodeF, 2);
+        nodeD.createEdge(nodeE, 3);
 
-        nodeE.createEdge(nodeE, nodeB, 2);
-        nodeE.createEdge(nodeE, nodeC, 3);
-        nodeE.createEdge(nodeE, nodeF, 2);
-        nodeE.createEdge(nodeE, nodeD, 3);
+        nodeE.createEdge(nodeB, 2);
+        nodeE.createEdge(nodeC, 3);
+        nodeE.createEdge(nodeF, 2);
+        nodeE.createEdge(nodeD, 3);
 
-        nodeF.createEdge(nodeF, nodeD, 2);
-        nodeF.createEdge(nodeF, nodeE, 2);
+        nodeF.createEdge(nodeD, 2);
+        nodeF.createEdge(nodeE, 2);
         */
 
         //THIS IS FOR AN ORIENTED GRAPH
-        nodeA.createEdge(nodeA, nodeB, 2);
+        nodeA.createEdge(nodeB, 2);
 
-        nodeB.createEdge(nodeB, nodeC, 1);
-        nodeB.createEdge(nodeB, nodeD, 4);
+        nodeB.createEdge(nodeC, 1);
+        nodeB.createEdge(nodeD, 4);
 
-        nodeC.createEdge(nodeC, nodeA, 3);
+        nodeC.createEdge(nodeA, 3);
 
-        nodeD.createEdge(nodeD, nodeC, 4);
-        nodeD.createEdge(nodeD, nodeE, 2);
-        nodeD.createEdge(nodeD, nodeF, 5);
+        nodeD.createEdge(nodeC, 4);
+        nodeD.createEdge(nodeE, 2);
+        nodeD.createEdge(nodeF, 5);
 
-        nodeE.createEdge(nodeE, nodeF, 1);
+        nodeE.createEdge(nodeF, 1);
 
 
         MyGraph graph = new MyGraph();
