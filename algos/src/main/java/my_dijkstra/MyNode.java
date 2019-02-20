@@ -1,6 +1,8 @@
 package my_dijkstra;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import util_structures.*;
 
 public class MyNode {

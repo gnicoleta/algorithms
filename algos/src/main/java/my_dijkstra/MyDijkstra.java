@@ -1,4 +1,5 @@
 package my_dijkstra;
+
 import util_structures.Triplet;
 
 import java.util.ArrayList;
@@ -150,7 +151,6 @@ public class MyDijkstra {
         nodeD.createEdge(nodeD, nodeF, 5);
 
         nodeE.createEdge(nodeE, nodeF, 1);
-
 
 
         MyGraph graph = new MyGraph();

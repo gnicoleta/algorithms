@@ -1,4 +1,5 @@
 package my_dijkstra;
+
 import java.util.ArrayList;
 
 public class MyGraph {
