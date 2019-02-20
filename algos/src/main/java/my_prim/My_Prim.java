@@ -12,8 +12,8 @@ public class My_Prim {
         }
     }
 
-    //public static void mst_prim(PGraph g, PNode source) {
-    public static void mst_prim(PGraph g, PNode source, PNode destination) {
+    public static void mst_prim(PGraph g, PNode source) {
+        //public static void mst_prim(PGraph g, PNode source, PNode destination) {
         ArrayList<PNode> visited_nodes = new ArrayList<PNode>();
 
         // this array will contain all the edges of the visited nodes
@@ -25,7 +25,8 @@ public class My_Prim {
 
         PNode current_node = g.findNode(source);
 
-        while (current_node != destination) {
+        //while (current_node != destination) {
+        while (!visited_nodes.contains(current_node)) {
             visited_nodes.add(current_node);
 
             //we add all the edges of the current_nod into the array with all the edges of ALL the visited nodes
@@ -44,7 +45,7 @@ public class My_Prim {
                 }
             }
 
-            //we add the the adges as they are parsed, in order to obtain the mst
+            //we add the the edges as they are parsed, in order to obtain the mst
             the_mst_edges.add(new Triplet<PNode, PNode, Integer>(current_node_parent, current_node, MIN));
 
             //to make sure we don't get on the same edge twice, we remove it from the array with all the edges of all visited nodes
@@ -53,20 +54,20 @@ public class My_Prim {
             possible_edges_from_visited_nodes.remove(new Triplet<PNode, PNode, Integer>(current_node, current_node_parent, MIN));
         }
 
-        if (current_node.equals(destination)) {
-            visited_nodes.add(current_node);
-        }
+//        if (current_node.equals(destination)) {
+//            visited_nodes.add(current_node);
+//        }
+
 //
 //        for (PNode p : visited_nodes) {
 //            System.out.println("Node: " + p.getName());
 //        }
 
         for (Triplet<PNode, PNode, Integer> tt : the_mst_edges) {
-            System.out.println(" " + tt.getFirst().getName() + " - " + tt.getSecond().getName() + ": " + tt.getThird());
+                System.out.println(" " + tt.getFirst().getName() + " - " + tt.getSecond().getName() + ": " + tt.getThird());
         }
-
-
     }
+
 
     public static void main(String args[]) {
 
@@ -116,6 +117,7 @@ public class My_Prim {
         graph.addNode(nodeF);
         graph.addNode(nodeG);
 
-        My_Prim.mst_prim(graph, nodeA, nodeG);
+        //My_Prim.mst_prim(graph, nodeA, nodeG);
+        My_Prim.mst_prim(graph, nodeA);
     }
 }
