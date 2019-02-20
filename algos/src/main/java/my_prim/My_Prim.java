@@ -1,5 +1,6 @@
 package my_prim;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import util_structures.Triplet;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class My_Prim {
         }
     }
 
+    //TODO-me the last edge must be fixed (null - last_node: MAX).
     public static void mst_prim(PGraph g, PNode source) {
         //public static void mst_prim(PGraph g, PNode source, PNode destination) {
         ArrayList<PNode> visited_nodes = new ArrayList<PNode>();
