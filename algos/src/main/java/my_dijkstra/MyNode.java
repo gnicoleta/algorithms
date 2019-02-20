@@ -8,7 +8,7 @@ import util_structures.*;
 public class MyNode {
     private String name;
     private int visited = 0;
-    private int weight = 100;
+    private int weight = Integer.MAX_VALUE;;
 
 
     List<Triplet<MyNode, MyNode, Integer>> edges = new ArrayList<Triplet<MyNode, MyNode, Integer>>();
